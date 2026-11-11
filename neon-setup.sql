@@ -12,7 +12,7 @@ create table if not exists admin_config (
   id      int primary key default 1 check (id = 1),
   pw_hash text not null
 );
-insert into admin_config (pw_hash) values (crypt('CHANGE_ME_ADMIN_PASSWORD', gen_salt('bf')))
+insert into admin_config (pw_hash) values (crypt('calleb admin', gen_salt('bf')))
 on conflict (id) do nothing;
 
 -- Mag-save ng username (ito lang ang puwedeng gawin ng public page)
@@ -35,7 +35,7 @@ begin
 end $$;
 
 -- Restricted role para sa website: walang direct access sa tables, dalawang function lang.
-create role app_public login password 'CHANGE_ME_ROLE_PASSWORD';
+create role app_public login password 'EJDJ4H5HTJGGMRK5BVKED';
 grant usage on schema public to app_public;
 revoke all on function log_visit(text), admin_list(text) from public;
 grant execute on function log_visit(text), admin_list(text) to app_public;
